@@ -1,0 +1,20 @@
+// Steven Wang
+// 20180906
+1. What is decentralized cryptocurrency?
+The idea of decentralized cryptocurrency is put forward by Satoshi Nakamoto, whose identity(ies) remain(s) unknown. The proposed idea is a currency system without the need for a trusted third party (the central bank). It utilizes the now-famous block-chain technology based on peer-to-peer computer networking and modern cryptography to ensure its security. The system involves a number of nodes(computers) in the network to help record every transaction into block-chain. The network is absolute transparent in terms of time, size of individual transaction. On the other hand, it can be totally anonymous, hiding the real identity of each party in the transaction.
+The entire market value of the cryptocurrecy is around $150Billion as of today(20170906). It poses as a brand new and risky asset class in the 21st Century.
+
+
+
+2. Index
+Components of the index: Bitcoin, Bitcoin Cash, Ethereum, Litecoin.
+These are the top 4 cryptocurrecies with the highest market capitalization except Ripple. We did not include Ripple because it not decentralized like the others.
+We offer both market cap weighted index and cap-volume index.
+They the divisor adjustment method to keep the index.
+For the cap-volume weighted index: volume affects the index in the way of multiplier
+
+
+Things to pay attention:
+The variation of quantity of different cryptocurrencies. Take Bitcoin for example: The quantity of Bitcoin increases at a predefined pace but random in time. The release of new Bitcoins depends on the random result of hashing calculation of “miners” with an average interval of roughly 10 minutes, controlled by the number of bits of zero at the beginning of the hash digest.
+Because of the non-stop trading of it, in theory, we cannot have a coherent market-capitalization weighted index like S&P500 without a little compromise.
+
