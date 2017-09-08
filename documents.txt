@@ -10,11 +10,14 @@ The entire market value of the cryptocurrecy is around $150Billion as of today(2
 Components of the index: Bitcoin, Bitcoin Cash, Ethereum, Litecoin.
 These are the top 4 cryptocurrecies with the highest market capitalization except Ripple. We did not include Ripple because it not decentralized like the others.
 We offer both market cap weighted index and cap-volume index.
-They the divisor adjustment method to keep the index.
-For the cap-volume weighted index: volume affects the index in the way of multiplier
+We use the divisor adjustment method to keep the index.
+For the cap-volume weighted index: volume affects the index in the way of multiplier.
+
+    Bitcoin: Bitcoin is the first and most widely-accepted cryptocurrency in the market. Its market value accounts for roughly 50% of the entire crypto currency market. At this time (2017-09-06), miners
 
 
 Things to pay attention:
 The variation of quantity of different cryptocurrencies. Take Bitcoin for example: The quantity of Bitcoin increases at a predefined pace but random in time. The release of new Bitcoins depends on the random result of hashing calculation of “miners” with an average interval of roughly 10 minutes, controlled by the number of bits of zero at the beginning of the hash digest.
 Because of the non-stop trading of it, in theory, we cannot have a coherent market-capitalization weighted index like S&P500 without a little compromise.
+
 

@@ -123,16 +123,30 @@ def market_cap_index(df, df_list):
         my_list = [0]
         my_list.extend(list(range(len(df_list[i]))))
 
-        # TODO remove try clause
-        try:
-            cmv = reduce(lambda x, y: x + df_list[i - 1][y]['Close'] * (df_list[i][y]['supply'] - df_list[i - 1][y]['supply']), my_list)
-        except IndexError:
-            my_list_1 = [0]
-            my_list_1.extend(list(range(len(df_list[i - 1]))))
-            new_i = len(df_list[i]) - 1
-            cmv = reduce(lambda x, y: x + df_list[i - 1][y]['Close'] * (df_list[i][y]['supply'] - df_list[i - 1][y]['supply']), my_list_1) + \
-                df_list[i][new_i]['Close'] * df_list[i][new_i]['supply']
+        ###
+        name_list_0 = [df_list[i - 1][x]['coin_name'] for x in range(len(df_list[i - 1]))]
+        name_list_1 = [df_list[i][x]['coin_name'] for x in range(len(df_list[i]))]
 
+        cmv = 0
+
+        if name_list_0 == name_list_1:
+            cmv = reduce(lambda x, y: x + df_list[i - 1][y]['Close'] * (df_list[i][y]['supply'] - df_list[i - 1][y]['supply']), my_list)
+
+        else:
+            name_list_intersection = list(set(name_list_0) & set(name_list_1))
+            name_list_add = list(set(name_list_1) - set(name_list_0))
+
+            for c in range(len(df_list[i])):
+                # this loop is to avoid column shifting problem
+                if df_list[i][c]['coin_name'] in name_list_intersection:
+                    for cc in range(len(df_list[i - 1])):
+                        if df_list[i - 1][cc]['coin_name'] == df_list[i][c]['coin_name']:
+                            previous_c = cc
+
+                    cmv += df_list[i - 1][previous_c]['Close'] * (df_list[i][c]['supply'] - df_list[i - 1][previous_c]['supply'])
+                elif df_list[i][c]['coin_name'] in name_list_add:
+                    cmv += df_list[i][c]['Close'] * df_list[i][c]['supply']
+        ###
         mv_1 = reduce(lambda x, y: x + df_list[i][y]['Close'] * df_list[i][y]['supply'], my_list)
 
         divisor_0 = (mv_0 / 1000) if (i == 1) else divisor_1
@@ -169,7 +183,7 @@ def cap_vol_index(df, df_list):
         trading_volume_list = list(map(lambda c: df_list[i][c]['Close'] * df_list[i][c]['volume_shares'], list(range(len(df_list[i])))))
         entire_trading_volume = sum(trading_volume_list)
         trading_volume_pct_list = [x / entire_trading_volume for x in trading_volume_list]
-        multiplier_list = [1 + x * 0.40 for x in trading_volume_pct_list]
+        multiplier_list = [1 + x * 0.667 for x in trading_volume_pct_list]
 
         # TODO remove try clause
         try:
