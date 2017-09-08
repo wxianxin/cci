@@ -129,6 +129,19 @@ def market_cap_index(df, df_list):
         except IndexError:
             my_list_1 = [0]
             my_list_1.extend(list(range(len(df_list[i - 1]))))
+
+        ####
+        name_list_0 = [df_list[i - 1][x]['coin_name'] for x in range(len(df_list[i - 1]))]
+        
+
+        ####
+
+
+
+
+
+
+
             new_i = len(df_list[i]) - 1
             cmv = reduce(lambda x, y: x + df_list[i - 1][y]['Close'] * (df_list[i][y]['supply'] - df_list[i - 1][y]['supply']), my_list_1) + \
                 df_list[i][new_i]['Close'] * df_list[i][new_i]['supply']
